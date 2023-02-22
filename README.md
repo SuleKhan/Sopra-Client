@@ -1,7 +1,8 @@
-# SoPra FS23 - Client Template with build pack
+# SoPra FS23 - Client Template with build pack LOL
 
 ## Getting started
 
+this is a change
 Read and go through these Tutorials. It will make your life easier:)
 
 - Read the React [Docs](https://reactjs.org/docs/getting-started.html)
