@@ -74,6 +74,12 @@ const Register = props => {
           />
           <div className="login button-container">
             <Button
+                width="100%"
+                onClick={() => history.push(`/login`)}
+            >
+                Back to Login
+            </Button>
+            <Button
               disabled={!username || !password}
               width="100%"
               onClick={() => doRegister()}
