@@ -42,7 +42,7 @@ const Register = props => {
 
   const doRegister = async () => {
     try {
-      const requestBody = JSON.stringify({username, name});
+      const requestBody = JSON.stringify({username, password});
       const response = await api.post('/users', requestBody);
 
       // Get the returned user and update a new object.
@@ -74,11 +74,11 @@ const Register = props => {
           />
           <div className="login button-container">
             <Button
-              disabled={!username || !name}
+              disabled={!username || !password}
               width="100%"
               onClick={() => doRegister()}
             >
-              Login
+              Register
             </Button>
           </div>
         </div>
