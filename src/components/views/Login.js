@@ -74,6 +74,12 @@ const Login = props => {
           />
           <div className="login button-container">
             <Button
+              width="100%"
+              onClick={() => history.push(`/register`)}
+            >
+              Register
+            </Button>
+            <Button
               disabled={!username || !name}
               width="100%"
               onClick={() => doLogin()}
