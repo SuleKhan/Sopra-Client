@@ -1,5 +1,6 @@
-import {Redirect, Route} from "react-router-dom";
+import {Redirect, Route, useParams} from "react-router-dom";
 import Game from "components/views/Game";
+import Profile from "components/views/Profile";
 import PropTypes from 'prop-types';
 
 const GameRouter = props => {
@@ -14,12 +15,17 @@ const GameRouter = props => {
       <Route exact path={`${props.base}`}>
         <Redirect to={`${props.base}/dashboard`}/>
       </Route>
+      <Route exact path={`${props.base}/dashboard/profile/:username`} children ={<Child />}/>
     </div>
   );
 };
 /*
 * Don't forget to export your component!
  */
+ function Child() {
+ let {username} = useParams();
+ return <Profile key={username} />
+ }
 
 GameRouter.propTypes = {
   base: PropTypes.string

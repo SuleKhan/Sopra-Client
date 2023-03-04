@@ -43,15 +43,10 @@ const Login = props => {
   const doLogin = async () => {
     try {
       const requestBody = JSON.stringify({username, password});
-      const response = await api.get('/users');
-      const users = response.data
+      console.log(requestBody);
+      const response = await api.post('/login', requestBody);
+      const user = new User(response.data);
 
-      for (let i = 0; i < users.length; i++) {
-        if (username == users[i].username && password == users[i].password) {
-            localStorage.setItem('token', users[i].token);
-            history.push(`/game`);
-        }
-      }
        //Get the returned user and update a new object.
       //const user = new User(response.data);
 
@@ -59,7 +54,8 @@ const Login = props => {
       //localStorage.setItem('token', user.token);
 
       // Login successfully worked --> navigate to the route /game in the GameRouter
-
+      localStorage.setItem('token', user.token);
+      history.push(`/game`);
 
 
     } catch (error) {

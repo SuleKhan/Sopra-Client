@@ -6,35 +6,37 @@ import {useHistory} from 'react-router-dom';
 import BaseContainer from "components/ui/BaseContainer";
 import PropTypes from "prop-types";
 import "styles/views/Game.scss";
+import User from 'models/User';
 
-const Player = ({user}) => {
-
-    const history = useHistory();
-
-    function handleClick() {
-      history.push(`/game/dashboard/profile/${user.username}`);
-    }
-
-    return (
-  <div className="player container">
-    <Button width = "100%"
-    onClick={() => handleClick()}>
-    {user.username}
+const Player = ({user}) => (
+  <div>
+    <div>
+        id: {user.id}
+    </div>
+    <div>
+         username: {user.username}
+    </div>
+    <div>
+         birthday: {user.birthday ? user.birthday : "Empty"}
+    </div>
+    <div>
+         creation date: {user.creationDate}
+    </div>
+    <Button>
+        Testing
     </Button>
-  </div>);
-}
+  </div>
+);
 
 Player.propTypes = {
   user: PropTypes.object
 };
 
-const Game = () => {
+const Profile = (username) => {
+
+  console.log(username);
   // use react-router-dom's hook to access the history
   const history = useHistory();
-
-  function handleClick() {
-    history.push(`/game/dashboard/profile`);
-  }
 
   // define a state variable (using the state hook).
   // if this variable changes, the component will re-render, but the variable will
@@ -44,8 +46,8 @@ const Game = () => {
   const [users, setUsers] = useState(null);
 
   const logout = () => {
-    localStorage.removeItem('token');
-    history.push('/login');
+    //localStorage.removeItem('token');
+    history.push('/game');
   }
 
   // the effect hook can be used to react to change in your component.
@@ -99,7 +101,7 @@ const Game = () => {
           width="100%"
           onClick={() => logout()}
         >
-          Logout
+          Back to Game
         </Button>
       </div>
     );
@@ -107,7 +109,7 @@ const Game = () => {
 
   return (
     <BaseContainer className="game container">
-      <h2>Users</h2>
+      <h2>Profile Page</h2>
       <p className="game paragraph">
         Click user to view their profile page:
       </p>
@@ -116,4 +118,4 @@ const Game = () => {
   );
 }
 
-export default Game;
+export default Profile;
