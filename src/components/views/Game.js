@@ -12,7 +12,7 @@ const Player = ({user}) => {
     const history = useHistory();
 
     function handleClick() {
-      history.push(`/game/dashboard/profile/${user.username}`);
+      history.push(`/game/dashboard/profile/${user.id}`);
     }
 
     return (

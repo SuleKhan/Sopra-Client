@@ -32,9 +32,9 @@ Player.propTypes = {
   user: PropTypes.object
 };
 
-const Profile = (username) => {
+const Profile = (id) => {
 
-  console.log(username);
+  console.log(id);
   // use react-router-dom's hook to access the history
   const history = useHistory();
 
@@ -43,7 +43,7 @@ const Profile = (username) => {
   // keep its value throughout render cycles.
   // a component can have as many state variables as you like.
   // more information can be found under https://reactjs.org/docs/hooks-state.html
-  const [users, setUsers] = useState(null);
+  const [user, setUser] = useState(null);
 
   const logout = () => {
     //localStorage.removeItem('token');
@@ -58,15 +58,16 @@ const Profile = (username) => {
     // effect callbacks are synchronous to prevent race conditions. So we put the async function inside:
     async function fetchData() {
       try {
-        const response = await api.get('/users');
+        console.log(id.id);
+        const response = await api.get('/users/'+id.id);
 
         // delays continuous execution of an async operation for 1 second.
         // This is just a fake async call, so that the spinner can be displayed
         // feel free to remove it :)
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        //await new Promise(resolve => setTimeout(resolve, 1000));
 
         // Get the returned users and update the state.
-        setUsers(response.data);
+        setUser(response.data);
 
         // This is just some data for you to see what is available.
         // Feel free to remove it.
@@ -89,13 +90,13 @@ const Profile = (username) => {
 
   let content = <Spinner/>;
 
-  if (users) {
+  if (user) {
     content = (
       <div className="game">
         <ul className="game user-list">
-          {users.map(user => (
+
             <Player user={user} key={user.id}/>
-          ))}
+
         </ul>
         <Button
           width="100%"

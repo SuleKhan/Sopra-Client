@@ -15,7 +15,7 @@ const GameRouter = props => {
       <Route exact path={`${props.base}`}>
         <Redirect to={`${props.base}/dashboard`}/>
       </Route>
-      <Route exact path={`${props.base}/dashboard/profile/:username`} children ={<Child />}/>
+      <Route exact path={`${props.base}/dashboard/profile/:id`} children ={<Child />}/>
     </div>
   );
 };
@@ -23,8 +23,8 @@ const GameRouter = props => {
 * Don't forget to export your component!
  */
  function Child() {
- let {username} = useParams();
- return <Profile key={username} />
+ let {id} = useParams();
+ return <Profile id={id} />
  }
 
 GameRouter.propTypes = {
