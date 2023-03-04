@@ -49,9 +49,11 @@ const Register = props => {
       const user = new User(response.data);
 
       // Store the token into the local storage.
-      localStorage.setItem('token', user.token);
+      //console.log(user.token);
+      //localStorage.setItem('token', user.token);
 
       // Login successfully worked --> navigate to the route /game in the GameRouter
+      localStorage.removeItem("token");
       history.push(`/login`);
     } catch (error) {
       alert(`Something went wrong during the login: \n${handleError(error)}`);

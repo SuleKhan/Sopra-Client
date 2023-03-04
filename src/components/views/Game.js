@@ -43,9 +43,22 @@ const Game = () => {
   // more information can be found under https://reactjs.org/docs/hooks-state.html
   const [users, setUsers] = useState(null);
 
-  const logout = () => {
+  const logout = async () => {
+    try {
+    const token = localStorage.getItem("token");
+    //console.log(token);
+    const requestBody = JSON.stringify({token});
+    console.log(requestBody);
+    const response = await api.put('/logout', requestBody);
+
     localStorage.removeItem('token');
     history.push('/login');
+
+    } catch (error) {
+            console.error(`Something went wrong while fetching the users: \n${handleError(error)}`);
+            console.error("Details:", error);
+            alert("Something went wrong while fetching the user2s! See the console for details.");
+          }
   }
 
   // the effect hook can be used to react to change in your component.

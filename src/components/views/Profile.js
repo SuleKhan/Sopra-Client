@@ -17,12 +17,15 @@ const Player = ({user}) => (
          username: {user.username}
     </div>
     <div>
+         status: {user.status}
+    </div>
+    <div>
          birthday: {user.birthday ? user.birthday : "Empty"}
     </div>
     <div>
          creation date: {user.creationDate}
     </div>
-    <Button>
+    <Button disabled={"false"}>
         Testing
     </Button>
   </div>
@@ -34,7 +37,7 @@ Player.propTypes = {
 
 const Profile = (id) => {
 
-  console.log(id);
+
   // use react-router-dom's hook to access the history
   const history = useHistory();
 
@@ -58,7 +61,7 @@ const Profile = (id) => {
     // effect callbacks are synchronous to prevent race conditions. So we put the async function inside:
     async function fetchData() {
       try {
-        console.log(id.id);
+
         const response = await api.get('/users/'+id.id);
 
         // delays continuous execution of an async operation for 1 second.
