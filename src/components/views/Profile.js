@@ -8,7 +8,27 @@ import PropTypes from "prop-types";
 import "styles/views/Game.scss";
 import User from 'models/User';
 
-const Player = ({user}) => (
+const FormField = props => {
+  return (
+    <div className="login field">
+      <label className="login label">
+        {props.label}
+      </label>
+      <input
+        className="login input"
+        placeholder="enter here.."
+        value={props.value}
+        onChange={e => props.onChange(e.target.value)}
+      />
+    </div>
+  );
+};
+
+const Player = ({user}) => {
+
+    const history = useHistory();
+
+    return (
   <div>
     <div>
         id: {user.id}
@@ -25,11 +45,14 @@ const Player = ({user}) => (
     <div>
          creation date: {user.creationDate}
     </div>
-    <Button disabled={"false"}>
-        Testing
-    </Button>
+    <Button
+    disabled={!(localStorage.getItem("token") == user.token)}
+    onClick={() => history.push(user.id+"/information")} >
+        Update Personal Information
+        </Button>
   </div>
 );
+};
 
 Player.propTypes = {
   user: PropTypes.object
@@ -112,7 +135,7 @@ const Profile = (id) => {
   }
 
   return (
-    <BaseContainer className="game container">
+    <BaseContainer className="game container" margin-left="100px">
       <h2>Profile Page</h2>
       <p className="game paragraph">
         Click user to view their profile page:
