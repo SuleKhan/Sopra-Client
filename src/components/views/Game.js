@@ -52,6 +52,7 @@ const Game = () => {
     const response = await api.put('/logout', requestBody);
 
     localStorage.removeItem('token');
+    localStorage.removeItem("id");
     history.push('/login');
 
     } catch (error) {

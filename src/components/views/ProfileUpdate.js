@@ -35,6 +35,28 @@ FormField.propTypes = {
   onChange: PropTypes.func
 };
 
+const FormFieldBirthday = props => {
+  return (
+    <div className="login field">
+      <label className="login label">
+        {props.label}
+      </label>
+      <input
+        className="login input"
+        placeholder="yyyy-MM-dd"
+        value={props.value}
+        onChange={e => props.onChange(e.target.value)}
+      />
+    </div>
+  );
+};
+
+FormFieldBirthday.propTypes = {
+  label: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func
+};
+
 const ProfileUpdate = props => {
   const history = useHistory();
   const [birthday, setBirthday] = useState(null);
@@ -62,19 +84,19 @@ const ProfileUpdate = props => {
 
   return (
     <BaseContainer>
-      <div className="login container">
-        <div className="login form">
+      <div className="game container">
+        <div className="game">
           <FormField
             label="Change Username"
             value={username}
             onChange={un => setUsername(un)}
           />
-          <FormField
+          <FormFieldBirthday
             label="Change Birthday"
             value={birthday}
             onChange={p => setBirthday(p)}
           />
-          <div className="login button-container">
+          <div>
             <Button
                 width="100%"
                 onClick={() => history.push(`/game/dashboard/profile/${props.id}`)}
