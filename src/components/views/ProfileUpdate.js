@@ -65,7 +65,7 @@ const ProfileUpdate = props => {
   const doProfileUpdate = async () => {
     try {
       const requestBody = JSON.stringify({username, birthday});
-      const response = await api.put('/users/'+props.id, requestBody);
+      const response = await api.put(`/users/${props.id}`, requestBody);
 
       // Get the returned user and update a new object.
       //const user = new User(response.data);

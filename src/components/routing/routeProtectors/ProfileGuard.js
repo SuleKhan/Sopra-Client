@@ -1,8 +1,5 @@
 import {Redirect} from "react-router-dom";
 import PropTypes from "prop-types";
-import React, {useEffect, useState} from 'react';
-import {api, handleError} from 'helpers/api';
-import User from 'models/User';
 
 /**
  *

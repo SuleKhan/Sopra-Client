@@ -6,7 +6,7 @@ import {useHistory} from 'react-router-dom';
 import BaseContainer from "components/ui/BaseContainer";
 import PropTypes from "prop-types";
 import "styles/views/Game.scss";
-import User from 'models/User';
+
 
 const FormField = props => {
   return (
@@ -47,7 +47,7 @@ const Player = ({user}) => {
     </div>
     <Button
     disabled={!(localStorage.getItem("token") == user.token)}
-    onClick={() => history.push(user.id+"/information")} >
+    onClick={() => history.push(`${user.id}/information`)} >
         Update Personal Information
         </Button>
   </div>
@@ -85,7 +85,7 @@ const Profile = (id) => {
     async function fetchData() {
       try {
 
-        const response = await api.get('/users/'+id.id);
+        const response = await api.get(`/users/${id.id}`);
 
         // delays continuous execution of an async operation for 1 second.
         // This is just a fake async call, so that the spinner can be displayed

@@ -32,9 +32,6 @@ const Game = () => {
   // use react-router-dom's hook to access the history
   const history = useHistory();
 
-  function handleClick() {
-    history.push(`/game/dashboard/profile`);
-  }
 
   // define a state variable (using the state hook).
   // if this variable changes, the component will re-render, but the variable will
@@ -49,7 +46,7 @@ const Game = () => {
     //console.log(token);
     const requestBody = JSON.stringify({token});
     console.log(requestBody);
-    const response = await api.put('/logout', requestBody);
+    await api.put('/logout', requestBody);
 
     localStorage.removeItem('token');
     localStorage.removeItem("id");

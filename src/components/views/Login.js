@@ -24,6 +24,7 @@ const FormField = props => {
         placeholder="enter here.."
         value={props.value}
         onChange={e => props.onChange(e.target.value)}
+        type={props.type}
       />
     </div>
   );
@@ -77,6 +78,7 @@ const Login = props => {
             label="Password"
             value={password}
             onChange={p => setPassword(p)}
+            type="password"
           />
           <div className="login button-container">
             <Button
