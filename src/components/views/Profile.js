@@ -8,22 +8,6 @@ import PropTypes from "prop-types";
 import "styles/views/Game.scss";
 
 
-const FormField = props => {
-  return (
-    <div className="login field">
-      <label className="login label">
-        {props.label}
-      </label>
-      <input
-        className="login input"
-        placeholder="enter here.."
-        value={props.value}
-        onChange={e => props.onChange(e.target.value)}
-      />
-    </div>
-  );
-};
-
 const Player = ({user}) => {
 
     const history = useHistory();
@@ -46,7 +30,7 @@ const Player = ({user}) => {
          creation date: {user.creationDate}
     </div>
     <Button
-    disabled={!(localStorage.getItem("token") == user.token)}
+    disabled={!(localStorage.getItem("token") === user.token)}
     onClick={() => history.push(`${user.id}/information`)} >
         Update Personal Information
         </Button>
@@ -112,7 +96,7 @@ const Profile = (id) => {
     }
 
     fetchData();
-  }, []);
+  }, );
 
   let content = <Spinner/>;
 

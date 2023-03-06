@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
  */
 export const ProfileGuard = props => {
 
-  if (localStorage.getItem("id") == props.id) {
+  if (localStorage.getItem("id") === props.id) {
     return props.children;
   }
   return <Redirect to="/game"/>;

@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {api, handleError} from 'helpers/api';
-import User from 'models/User';
 import {useHistory} from 'react-router-dom';
 import {Button} from 'components/ui/Button';
 import 'styles/views/Login.scss';
@@ -44,6 +43,7 @@ const Register = props => {
     try {
       const requestBody = JSON.stringify({username, password});
       const response = await api.post('/users', requestBody);
+      console.log(response);
 
       // Get the returned user and update a new object.
       //const user = new User(response.data);

@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {api, handleError} from 'helpers/api';
-import User from 'models/User';
 import {useHistory} from 'react-router-dom';
 import {Button} from 'components/ui/Button';
 import 'styles/views/Login.scss';
@@ -65,7 +64,7 @@ const ProfileUpdate = props => {
   const doProfileUpdate = async () => {
     try {
       const requestBody = JSON.stringify({username, birthday});
-      const response = await api.put(`/users/${props.id}`, requestBody);
+      await api.put(`/users/${props.id}`, requestBody);
 
       // Get the returned user and update a new object.
       //const user = new User(response.data);
