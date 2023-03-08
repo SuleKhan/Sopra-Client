@@ -3,6 +3,7 @@ import Game from "components/views/Game";
 import Profile from "components/views/Profile";
 import ProfileUpdate from "components/views/ProfileUpdate";
 import {ProfileGuard} from "components/routing/routeProtectors/ProfileGuard";
+import {LoggedInGuard} from "components/routing/routeProtectors/LoggedInGuard";
 import PropTypes from 'prop-types';
 
 const GameRouter = props => {
@@ -12,7 +13,9 @@ const GameRouter = props => {
   return (
     <div style={{display: 'flex', flexDirection: 'column'}}>
       <Route exact path={`${props.base}/dashboard`}>
-        <Game/>
+        <LoggedInGuard>
+            <Game/>
+        </LoggedInGuard>
       </Route>
       <Route exact path={`${props.base}`}>
         <Redirect to={`${props.base}/dashboard`}/>
@@ -31,7 +34,11 @@ const GameRouter = props => {
 
  function Child() {
  let {id} = useParams();
- return <Profile id={id} />
+ return (
+ <LoggedInGuard>
+    <Profile id={id} />
+ </LoggedInGuard>
+ )
  }
 
  function ProfileChild() {
