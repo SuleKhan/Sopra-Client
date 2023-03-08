@@ -5,6 +5,7 @@ import {Button} from 'components/ui/Button';
 import 'styles/views/Login.scss';
 import BaseContainer from "components/ui/BaseContainer";
 import PropTypes from "prop-types";
+import User from 'models/User';
 
 /*
 It is possible to add multiple components inside a single file,
@@ -46,15 +47,16 @@ const Register = props => {
       console.log(response);
 
       // Get the returned user and update a new object.
-      //const user = new User(response.data);
+      const user = new User(response.data);
 
       // Store the token into the local storage.
       //console.log(user.token);
-      //localStorage.setItem('token', user.token);
+      localStorage.setItem('token', user.token);
+      localStorage.setItem('id', user.id);
 
       // Login successfully worked --> navigate to the route /game in the GameRouter
       //localStorage.removeItem("token");
-      history.push(`/login`);
+      history.push(`/game`);
     } catch (error) {
       alert(`Something went wrong during the login: \n${handleError(error)}`);
     }

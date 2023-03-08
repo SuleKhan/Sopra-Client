@@ -45,7 +45,7 @@ const Login = props => {
     try {
       const requestBody = JSON.stringify({username, password});
       //console.log(requestBody);
-      const response = await api.post('/login', requestBody);
+      const response = await api.put('/login', requestBody);
       const user = new User(response.data);
 
        //Get the returned user and update a new object.
