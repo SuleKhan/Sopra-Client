@@ -44,15 +44,8 @@ const Login = props => {
   const doLogin = async () => {
     try {
       const requestBody = JSON.stringify({username, password});
-      //console.log(requestBody);
       const response = await api.put('/login', requestBody);
       const user = new User(response.data);
-
-       //Get the returned user and update a new object.
-      //const user = new User(response.data);
-
-       //Store the token into the local storage.
-      //localStorage.setItem('token', user.token);
 
       // Login successfully worked --> navigate to the route /game in the GameRouter
       localStorage.setItem('token', user.token);

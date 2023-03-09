@@ -7,6 +7,7 @@ import BaseContainer from "components/ui/BaseContainer";
 import PropTypes from "prop-types";
 import "styles/views/Game.scss";
 
+// Button for each user which when clicked redirects to profile page
 const Player = ({user}) => {
 
     const history = useHistory();
@@ -43,11 +44,10 @@ const Game = () => {
   const logout = async () => {
     try {
     const token = localStorage.getItem("token");
-    //console.log(token);
     const requestBody = JSON.stringify({token});
-    console.log(requestBody);
     await api.put('/logout', requestBody);
 
+    // User successfully logged out --> remove local storage items and redirect back to login
     localStorage.removeItem('token');
     localStorage.removeItem("id");
     history.push('/login');

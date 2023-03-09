@@ -32,6 +32,7 @@ const GameRouter = props => {
    base: PropTypes.string
  }
 
+// Takes id from the URL and redirects to the respective profile page
  function Child() {
  let {id} = useParams();
  return (
@@ -41,9 +42,9 @@ const GameRouter = props => {
  )
  }
 
+// Takes id from the URL and redirects to update profile page after a user check
  function ProfileChild() {
   let {id} = useParams();
-  console.log("HEY");
   return (
   <ProfileGuard id={id}>
     <ProfileUpdate id={id} />

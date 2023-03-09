@@ -44,18 +44,15 @@ const Register = props => {
     try {
       const requestBody = JSON.stringify({username, password});
       const response = await api.post('/users', requestBody);
-      console.log(response);
 
       // Get the returned user and update a new object.
       const user = new User(response.data);
 
-      // Store the token into the local storage.
-      //console.log(user.token);
+      // Store the token and user id into the local storage.
       localStorage.setItem('token', user.token);
       localStorage.setItem('id', user.id);
 
       // Login successfully worked --> navigate to the route /game in the GameRouter
-      //localStorage.removeItem("token");
       history.push(`/game`);
     } catch (error) {
       alert(`Something went wrong during the login: \n${handleError(error)}`);

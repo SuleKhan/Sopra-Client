@@ -34,6 +34,7 @@ FormField.propTypes = {
   onChange: PropTypes.func
 };
 
+// Form field for the birthday
 const FormFieldBirthday = props => {
   return (
     <div className="login field">
@@ -66,15 +67,7 @@ const ProfileUpdate = props => {
       const requestBody = JSON.stringify({username, birthday});
       await api.put(`/users/${props.id}`, requestBody);
 
-      // Get the returned user and update a new object.
-      //const user = new User(response.data);
-
-      // Store the token into the local storage.
-      //console.log(user.token);
-      //localStorage.setItem('token', user.token);
-
-      // Login successfully worked --> navigate to the route /game in the GameRouter
-      //localStorage.removeItem("token");
+      // Profile successfully updated --> navigate back to the users profile
       history.push(`/game/dashboard/profile/${props.id}`);
     } catch (error) {
       alert(`Something went wrong during the login: \n${handleError(error)}`);
