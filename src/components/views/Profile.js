@@ -15,19 +15,19 @@ const Player = ({user}) => {
     return (
   <div>
     <div>
-        id: {user.id}
+        Id: {user.id}
     </div>
     <div>
-         username: {user.username}
+         Username: {user.username}
     </div>
     <div>
-         status: {user.status}
+         Status: {user.status}
     </div>
     <div>
-         birthday: {user.birthday ? user.birthday : "Empty"}
+         Birthday: {user.birthday ? user.birthday : "yyyy-MM-dd"}
     </div>
     <div>
-         creation date: {user.creationDate}
+         Creation Date: {user.creationDate}
     </div>
     <Button
     disabled={!(localStorage.getItem("token") === user.token)}
